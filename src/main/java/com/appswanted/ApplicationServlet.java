@@ -17,11 +17,6 @@ import java.io.IOException;
 
 public class ApplicationServlet extends EntryServlet {
 
-//    @Override
-//    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        resp.getWriter().print("Hello from Java!\n");
-//    }
-
     @Override
     protected Route[] routes() throws UrlParseException {
         return new Route[] {
