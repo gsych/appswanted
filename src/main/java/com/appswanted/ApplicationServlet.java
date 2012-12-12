@@ -9,18 +9,13 @@ import org.featherj.routes.Route;
 import org.featherj.routes.Router;
 import org.featherj.routes.UrlParseException;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-
 public class ApplicationServlet extends EntryServlet {
 
     @Override
     protected Route[] routes() throws UrlParseException {
         return new Route[] {
-            Router.route("/", IndexController.Index)
+            Router.route("/", IndexController.Index),
+            Router.resourceRoute("/css/*")
         };
     }
 
