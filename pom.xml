@@ -34,6 +34,11 @@
             <artifactId>c3p0</artifactId>
             <version>0.9.1.2</version>
         </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.21</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -49,15 +54,33 @@
                         <goals>
                             <goal>java</goal>
                         </goals>
+                        <configuration>
+                            <mainClass>org.featherj.tools.GenerateViews</mainClass>
+                            <arguments>
+                                <argument>src\main\java\</argument>
+                                <argument>com\appswanted\views</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-tables</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>org.featherj.tools.DbTablesGenerator</mainClass>
+                            <arguments>
+                                <!--<connection-string> <username> <password> <src-base-dir> <relative-output-dir>-->
+                                <argument>jdbc:mysql://localhost:3306/appswanted</argument>
+                                <argument>root</argument>
+                                <argument>cleopatra</argument>
+                                <argument>src\main\java\</argument>
+                                <argument>com\appswanted\db\tables\</argument>
+                            </arguments>
+                        </configuration>
                     </execution>
                 </executions>
-                <configuration>
-                    <mainClass>org.featherj.tools.GenerateViews</mainClass>
-                    <arguments>
-                        <argument>src\main\java\</argument>
-                        <argument>com\appswanted\views</argument>
-                    </arguments>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
