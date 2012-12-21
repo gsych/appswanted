@@ -1,6 +1,8 @@
 package com.appswanted;
 
 import com.appswanted.controllers.IndexController;
+import com.appswanted.controllers.PostsController;
+import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.HandlerList;
@@ -12,17 +14,23 @@ import org.featherj.EntryServlet;
 import org.featherj.routes.Route;
 import org.featherj.routes.Router;
 import org.featherj.routes.UrlParseException;
+import org.featherj.routes.params.StringRouteParam;
 
 public class ApplicationServlet extends EntryServlet {
 
     @Override
     protected Route[] routes() throws UrlParseException {
         return new Route[] {
-            Router.route("/", IndexController.Index)
+            Router.route(IndexController.Index, "/"),
+            Router.route(PostsController.SearchTags, "/search/tags/:query", new StringRouteParam(":query"))
         };
     }
 
     public static void main(String[] args) throws Exception{
+
+        com.mchange.v2.c3p0.ComboPooledDataSource ds = new ComboPooledDataSource();
+        ds.setDriverClass("");
+
         //Server server = new Server(Integer.valueOf(System.getenv("PORT")));
         Server server = new Server(Integer.valueOf(5000));
 
