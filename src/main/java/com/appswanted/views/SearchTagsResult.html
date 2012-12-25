@@ -1,0 +1,49 @@
+<% import java.util.List; %>
+<% import com.appswanted.db.tables.records.PostsRecord; %>
+
+<% extends MainLayout %>
+
+<% members
+    private final List<PostsRecord> records;
+    private String queryString;
+
+    public SearchTagsResult(List<PostsRecord> records, String queryString) {
+        this.records = records;
+        this.queryString = queryString;
+    }
+
+    private static String excerpt(String content) {
+        if (content == null || content.isEmpty()) {
+            return "";
+        }
+        int cut = content.length() > 200 ? 200 : content.length();
+        return content.substring(0, cut - 1) + (cut < 200 ? "" : "...");
+    }
+%>
+
+<div class="row-fluid">
+    <div class="span12">
+        <h1>Results:</h1>
+        <div class="row-fluid">
+            <form>
+                <div class="controls controls-row input-append">
+                    <input id="search-tags" class="span10" type="text" placeholder="Comma separated tags..." value="<%= queryString %>">
+                    <button id="search-btn" class="btn btn-primary span2">Search</button>
+                </div>
+            </form>
+        </div>
+
+        <% for (PostsRecord rec : records) { %>
+            <div class="row-fluid post">
+                <div class="span10">
+                    <strong><a href="#"><%= rec.getSubject() %></a></strong>
+                    <p><%= excerpt(rec.getContent()) %></p>
+                </div>
+                <div class="span2 votes-count">
+                    <h2><%= (rec.getScore() == null ? 0 : rec.getScore())%></h2>
+                    <p>score</p>
+                </div>
+            </div>
+        <% } %>
+    </div>
+</div>

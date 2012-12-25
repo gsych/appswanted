@@ -11,7 +11,11 @@ public class IndexController extends Controller {
     public static Action Index = new Action() {
         @Override
         public ActionResult run(Request request) throws Exception {
-            return ok(new Index());
+            Index index = new Index();
+            index.headJs("/js/common/search-form.js");
+            index.headJs("/js/views/index.js");
+
+            return ok(index);
         }
     };
 }

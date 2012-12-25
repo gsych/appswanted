@@ -1,0 +1,16 @@
+<% import com.appswanted.db.tables.records.PostsRecord; %>
+
+<% extends MainLayout %>
+
+<% members
+    private final PostsRecord record;
+
+    public Post(PostsRecord record) {
+        this.record = record;
+    }
+%>
+
+<div class="row-fluid">
+    <div class="span8"></div>
+    <div class="span4"></div>
+</div>

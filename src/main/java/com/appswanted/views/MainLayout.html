@@ -1,14 +1,31 @@
-<!DOCTYPE html>
+<% import java.util.ArrayList; %>
+<% members
+    private ArrayList<String> headJs = new ArrayList<String>();
+
+    public void headJs(String path) {
+        headJs.add(path);
+    }
+
+%><!DOCTYPE html>
 <html>
 <head>
     <title>Apps Wanted</title>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap-wysihtml5-0.0.2.css">
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap-wysihtml5-0.0.2.css">
+    <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
 
-    <script src="js/wysihtml5-0.3.0.js"></script>
+    <script src="/js/lib/wysihtml5-0.3.0.js"></script>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/bootstrap-wysihtml5-0.0.2.js"></script>
+    <script src="/js/lib/bootstrap.min.js"></script>
+    <script src="/js/lib/bootstrap-wysihtml5-0.0.2.js"></script>
+
+    <%
+    for (String js : headJs) {
+        %>
+        <script src="<%= js %>"></script>
+        <%
+    }
+    %>
+
     <style type="text/css">
         .votes-count {
         background-color:#EEE;
@@ -31,4 +48,3 @@
 </div>
 </body>
 </html>
-

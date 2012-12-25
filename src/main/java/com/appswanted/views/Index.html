@@ -15,8 +15,10 @@
                     <input type="text" name="email" id="email" class="span11">
                     <label for="repeat_email">Repeat Email</label>
                     <input type="text" name="repeat_email" id="repeat_email" class="span11">
+                    <label for="subject">Subject</label>
+                    <input type="text" name="subject" id="subject" class="span11" placeholder="A subject for an app...">
                     <label for="app_description">Description</label>
-                    <textarea name="app_description" id="app_description" rows="7" placeholder="Discribe an app..." class="span11">
+                    <textarea name="app_description" id="app_description" rows="7" placeholder="Describe an app..." class="span11">
                     </textarea>
                     <br/>
                     <button type="submit" class="btn btn-primary">Submit</button><span class="help-inline">And wait for replies from other users and developers!</span>
@@ -27,9 +29,24 @@
     <div class="span6">
         <h1>See which apps other people want and collaborate!</h1>
         <div class="row-fluid">
-            <div class="input-append">
-                <input class="span11" type="text" id="search-tags" placeholder="Comma separated tags..." >
-                <button class="btn btn-primary">Search</button>
+            <form>
+                <div class="controls controls-row input-append">
+                    <input id="search-tags" class="span10" type="text" placeholder="Comma separated tags..." >
+                    <button id="search-btn" class="btn btn-primary span2">Search</button>
+                </div>
+            </form>
+        </div>
+        <div class="row-fluid post">
+            <div class="span10">
+                <strong><a href="#">My super best application idea ever.</a></strong>
+                <p>
+                    An app description excerpt goes here. My super best application should be very useful
+                    for a lot of you folks because it's best ever.
+                </p>
+            </div>
+            <div class="span2 votes-count">
+                <h2>0</h2>
+                <p>votes</p>
             </div>
         </div>
         <div class="row-fluid post">
@@ -49,20 +66,7 @@
             <div class="span10">
                 <strong><a href="#">My super best application idea ever.</a></strong>
                 <p>
-                    An app description exceprt goes here. My super best application should be very useful
-                    for a lot of you folks because it's best ever.
-                </p>
-            </div>
-            <div class="span2 votes-count">
-                <h2>0</h2>
-                <p>votes</p>
-            </div>
-        </div>
-        <div class="row-fluid post">
-            <div class="span10">
-                <strong><a href="#">My super best application idea ever.</a></strong>
-                <p>
-                    An app description exceprt goes here. My super best application should be very useful
+                    An app description excerpt goes here. My super best application should be very useful
                     for a lot of you folks because it's best ever.
                 </p>
             </div>

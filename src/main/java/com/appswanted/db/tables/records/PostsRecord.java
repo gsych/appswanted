@@ -38,6 +38,14 @@ public class PostsRecord extends DbRecord {
         setValue(Posts.Ts, value);
     }
     
+    public String getSubject() {
+        return getValue(Posts.Subject);
+    }
+    
+    public void setSubject(String value) {
+        setValue(Posts.Subject, value);
+    }
+    
     public Integer getScore() {
         return getValue(Posts.Score);
     }
